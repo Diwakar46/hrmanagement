@@ -1,0 +1,40 @@
+   theme: ThemeData(
+        // Setting the brightness of the theme to light
+        brightness: Brightness.light,
+
+        // Setting the primary color of the theme
+        primary: MyColors.kprimary,
+
+        // Setting the color used on top of the primary color for text, icons, etc.
+        onPrimary: MyColors.kprimary,
+
+        // Setting the secondary color of the theme
+        secondary: MyColors.ksecondary,
+
+        // Setting the color used on top of the secondary color for text, icons, etc.
+        onSecondary: MyColors.ksecondary,
+
+        // Setting the color used to indicate errors or validation issues
+        error: MyColors.kerror,
+        
+        // Setting the color used on top of the error color for text, icons, etc.
+        onError: MyColors.kerror,
+
+        // Setting the background color of the app's scaffold
+        background: background,
+
+        // Setting the color used on top of the background color for text, icons, etc.
+        onBackground: onBackground,
+
+        // Setting the surface color of components like cards and dialogs to show elevation
+        surface: surface,
+        
+        // Setting the color used on top of the surface color for text, icons, etc. to show elevation
+        onSurface: onSurface,
+      ),
+
+
+      //Making a List<Widget> _tabs = 
+      //DefaultTabController
+      //TabBar
+      //TabBarView children _tabs

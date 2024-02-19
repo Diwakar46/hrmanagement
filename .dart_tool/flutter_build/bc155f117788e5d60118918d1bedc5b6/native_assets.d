@@ -1,0 +1,1 @@
+ /home/acer/Documents/hrmanagement/.dart_tool/flutter_build/bc155f117788e5d60118918d1bedc5b6/native_assets.yaml: 

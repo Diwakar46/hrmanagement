@@ -1,0 +1,4 @@
+#Mon Feb 19 16:04:53 NPT 2024
+base.0=/home/acer/Documents/flutter/hrmanagement/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
