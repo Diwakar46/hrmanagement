@@ -14,7 +14,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+      backgroundColor: MyColors.kscaffold,
       //Single Child Scrool view to avoid feild Khole xi Register button also seen
       body: SingleChildScrollView(
         child: Padding(

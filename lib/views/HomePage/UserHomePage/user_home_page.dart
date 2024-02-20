@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hrmanagement/constants/constants.dart';
-import 'package:hrmanagement/views/Drawer/drawer_page.dart';
+import 'package:hrmanagement/views/Drawer/AdminDrawer/admin_drawer_page.dart';
 import 'package:hrmanagement/views/HomePage/home_controller.dart';
 import 'package:hrmanagement/views/Login/login.dart';
 import 'package:hrmanagement/views/Register/register.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class UserHome extends StatelessWidget {
+  UserHome({super.key});
   final HomeController homeControllerObj = Get.put(HomeController());
 
   @override
@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
         child: DefaultTabController(
           length: 4,
           child: Scaffold(
-              drawer: const MyDrawer(),
+              drawer: const AdminDrawer(),
               appBar: AppBar(
                 bottom: TabBar(
                     labelColor: MyColors.kprimary,

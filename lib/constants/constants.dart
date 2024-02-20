@@ -10,4 +10,9 @@ class MyColors {
   static Color kscaffold = Colors.grey.shade200;
   static Color ktransparent = Colors.transparent;
   static Color kgreen = Colors.greenAccent;
+  static LinearGradient myGradient = LinearGradient(
+    colors: [MyColors.kprimary, MyColors.kwhite],
+    end: Alignment.bottomLeft,
+    begin: Alignment.bottomRight,
+  );
 }

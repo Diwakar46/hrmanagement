@@ -1,11 +1,11 @@
 class JwtResponse {
   final String? token;
-  final String? id;
+  final int? id;
   final String? firstname;
   final String? middlename;
   final String? lastname;
   final String? email;
-  final Set<String>? roles;
+  final List<String>? roles;
   final String? status;
 
   JwtResponse({
@@ -27,7 +27,9 @@ class JwtResponse {
       middlename: json['middlename'],
       lastname: json['lastname'],
       email: json['email'],
-      roles: (json['roles'] as List).cast<String>().toSet(),
+      roles: (json['roles'] as List<dynamic>)
+          .map((role) => role.toString())
+          .toList(),
       status: json['status'],
     );
   }

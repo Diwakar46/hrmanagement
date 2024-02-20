@@ -3,8 +3,10 @@ import 'package:get/get.dart';
 import 'package:hrmanagement/api/api_client.dart';
 import 'package:hrmanagement/api/jwt_response.dart';
 import 'package:hrmanagement/constants/constants.dart';
-import 'package:hrmanagement/views/HomePage/home_page.dart';
+import 'package:hrmanagement/views/HomePage/AdminHomePage/admin_home_page.dart';
+import 'package:hrmanagement/views/HomePage/UserHomePage/user_home_page.dart';
 import 'package:http/http.dart' as http;
+import 'package:hrmanagement/Database/database.dart';
 
 class LoginController extends GetxController {
   Future<void> login(String email, String password) async {
@@ -28,28 +30,46 @@ class LoginController extends GetxController {
       );
 
       if (response.statusCode == 200) {
+        print('status code:${response.statusCode}');
         var responseData = jsonDecode(response.body);
         var jwtResponse = JwtResponse.fromJson(responseData);
+        var token = jwtResponse.token;
+        var firstName = jwtResponse.firstname;
+        var lastName = jwtResponse.lastname;
+        var email = jwtResponse.email;
+        var role = jwtResponse.roles;
+
+        DatabaseHelper.insert(token, firstName, lastName, email, role);
+
         if (jwtResponse.roles != null &&
             jwtResponse.roles!.contains('ROLE_ADMIN')) {
-          Get.to(HomePage()); //admin Homepage ma login
+          Get.to(AdminHome()); //  //admin Homepage ma login
+          Get.snackbar('Sucess',
+              'Logged in successfully.Redirecting to admin home page...',
+              snackPosition: SnackPosition.BOTTOM,
+              borderRadius: 3,
+              backgroundColor: MyColors.kprimary);
         } else {
-          // Get.to(HomePage()); => User home page ma login
+          Get.to(UserHome); //this will be user homePage
+          Get.snackbar('Sucess',
+              'Logged in successfully.Redirecting to user home page...',
+              snackPosition: SnackPosition.BOTTOM,
+              borderRadius: 3,
+              backgroundColor: MyColors.kprimary);
         }
-        Get.to(HomePage());
-        Get.snackbar('Sucess', 'Logged in sucessfully:',
-            snackPosition: SnackPosition.BOTTOM,
-            backgroundColor: MyColors.kgreen);
       } else {
-        Get.snackbar('Failed', 'Error While LoginIn error',
+        Get.snackbar(
+            'Failed', 'Error occurred while logging in.Please try again later.',
             duration: const Duration(seconds: 1),
             snackPosition: SnackPosition.BOTTOM,
+            borderRadius: 3,
             backgroundColor: MyColors.kerror);
       }
     } catch (e) {
-      print('error while signing$e');
+      print('error while $e');
       Get.snackbar('Failed', 'Error:$e',
           snackPosition: SnackPosition.BOTTOM,
+          borderRadius: 3,
           backgroundColor: MyColors.kerror);
     }
   }
@@ -59,7 +79,7 @@ class LoginController extends GetxController {
 //  "username": 'diwakar@gmail.com',
 //       "password": '5267Diw@,
 
-//this is function for fetching data from the api
+//this is function for fetching data from the api another method
 
   // Future<Map<String, dynamic>> fetchData() async {
     //   var fetchedData;

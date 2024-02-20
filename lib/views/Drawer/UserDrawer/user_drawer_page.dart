@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MyDrawer extends Drawer {
-  const MyDrawer({super.key});
+class UserDrawer extends Drawer {
+  const UserDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class MyDrawer extends Drawer {
                 automaticallyImplyLeading:
                     false, // Hide the default back button
                 title: const Text(
-                  'Drawer',
+                  'Profile',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 actions: [

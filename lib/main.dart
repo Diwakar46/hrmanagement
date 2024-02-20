@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hrmanagement/constants/constants.dart';
-import 'package:hrmanagement/views/HomePage/home_page.dart';
+import 'package:hrmanagement/views/HomePage/AdminHomePage/admin_home_page.dart';
+import 'package:hrmanagement/views/HomePage/UserHomePage/user_home_page.dart';
 import 'package:hrmanagement/views/Login/login.dart';
 import 'package:hrmanagement/views/Register/register.dart';
 
@@ -9,12 +10,14 @@ void main() => runApp(GetMaterialApp(
       routes: {
         '/login': (context) => LoginPage(),
         '/register': (context) => RegisterPage(),
-        '/home': (context) => HomePage(),
+        '/adminhomepage': (context) => AdminHome(),
+        '/userhomepage': (context) => UserHome(),
       },
       theme: ThemeData(
         primaryColor: MyColors.kprimary,
         focusColor: MyColors.kprimary,
         splashColor: MyColors.kwhite,
+        dividerColor: Colors.transparent,
         // colorScheme: ColorScheme(
         //     brightness: Brightness.dark,
         //     primary: MyColors.kprimary,
@@ -29,5 +32,5 @@ void main() => runApp(GetMaterialApp(
         //     onSurface: MyColors.kblack),
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      home: AdminHome(),
     ));

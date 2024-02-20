@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 import 'package:hrmanagement/api/api_client.dart';
 import 'package:hrmanagement/constants/constants.dart';
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
