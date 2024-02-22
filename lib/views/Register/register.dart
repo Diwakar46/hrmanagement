@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hrmanagement/constants/constants.dart';
 import 'package:hrmanagement/Widgets/custom_button.dart';
 import 'package:hrmanagement/Widgets/custom_form.dart';
@@ -15,6 +16,14 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: MyColors.ktransparent,
+        leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(Icons.arrow_back)),
+      ),
       backgroundColor: Colors.grey.shade200,
       //Single Child Scrool view to avoid
       body: SingleChildScrollView(
@@ -77,9 +86,11 @@ class RegisterPage extends StatelessWidget {
                   height: 15,
                 ),
                 CustomElevatedButton(
-                  button_text: 'Register',
+                  height: 60,
+                  width: double.infinity,
+                  button_text: Text('Register',
+                      style: TextStyle(color: MyColors.kwhite)),
                   ovelay_color: Colors.grey,
-                  button_text_Color: Colors.white,
                   onPressed: () {
                     _registerObj.register(firstName.text, middleName.text,
                         lastName.text, email.text);

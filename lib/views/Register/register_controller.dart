@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:hrmanagement/Database/database.dart';
 import 'package:hrmanagement/api/api_client.dart';
 import 'package:hrmanagement/constants/constants.dart';
 import 'package:http/http.dart' as http;
@@ -7,6 +8,7 @@ import 'dart:convert';
 class RegisterController extends GetxController {
   Future<void> register(String firstName, String middleName, String lastName,
       String email) async {
+    var token = await DatabaseHelper.getToken();
     var url = Uri.parse(ApiClient.baseUrl + ApiClient.endPoint);
     var body = {
       "firstName": firstName,
@@ -15,6 +17,7 @@ class RegisterController extends GetxController {
       "email": email,
     };
     var headers = {
+      'token': token.toString(),
       'Content-Type': 'application/json',
       'Content-Length': '${jsonEncode(body).length}',
     };

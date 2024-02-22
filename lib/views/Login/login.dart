@@ -60,9 +60,11 @@ class LoginPage extends StatelessWidget {
                     height: 15,
                   ),
                   CustomElevatedButton(
-                    button_text: 'Login',
+                    height: 60,
+                    width: double.infinity,
+                    button_text:
+                        Text('Login', style: TextStyle(color: MyColors.kwhite)),
                     ovelay_color: Colors.grey,
-                    button_text_Color: Colors.white,
                     onPressed: () =>
                         _loginObj.login(_email.text, _password.text),
                   ),

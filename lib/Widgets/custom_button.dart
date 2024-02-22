@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  final String button_text;
+  final Widget button_text;
 
-  final Color? button_text_Color;
   final VoidCallback? onPressed;
   Color ovelay_color;
   Color button_Color;
   double button_border_o_radius;
+  double width;
+  double height;
 
   CustomElevatedButton(
       {super.key,
@@ -15,15 +16,16 @@ class CustomElevatedButton extends StatelessWidget {
       required this.button_text,
       this.onPressed,
       this.button_Color = Colors.green,
-      this.button_text_Color,
-      this.ovelay_color = Colors.green});
+      this.ovelay_color = Colors.green,
+      required this.height,
+      required this.width});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      width: double.infinity,
-      height: 60,
+      width: width,
+      height: height,
       child: InkWell(
         splashColor: ovelay_color,
         child: ElevatedButton(
@@ -41,10 +43,7 @@ class CustomElevatedButton extends StatelessWidget {
               height: 45,
               width: 60,
               child: Center(
-                child: Text(
-                  button_text,
-                  style: TextStyle(color: button_text_Color),
-                ),
+                child: button_text,
               ),
             )),
       ),

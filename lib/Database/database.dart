@@ -4,7 +4,7 @@ import 'package:sqflite/sqflite.dart' as sql;
 class DatabaseHelper {
   static Future<void> createTable(sql.Database database) async {
     await database.execute('''
-        CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,token TEXT, firstName TEXT,lastName TEXT,email TEXT,role Text)''');
+        CREATE TABLE user(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,token TEXT, firstName TEXT,lastName TEXT,email TEXT,role Text,Id INTEGER)''');
   }
 
   static Future<sql.Database> db() async {
@@ -16,17 +16,20 @@ class DatabaseHelper {
   }
 
   static Future<int> insert(String? token, String? firstName, String? lastName,
-      String? email, List<String>? role) async {
+      String? email, List<String>? role, int? Id) async {
     final db = await DatabaseHelper.db();
+    final roleString = role.toString();
     final data = {
       'token': token,
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
-      'role': role,
+      'role': roleString,
+      'id': Id,
     };
     final id = await db.insert('user', data,
         conflictAlgorithm: sql.ConflictAlgorithm.replace);
+    print('data: $data with id:$id');
     return id;
   }
 
@@ -40,12 +43,24 @@ class DatabaseHelper {
     return db.query('user', where: "id = ?", whereArgs: [id], limit: 1);
   }
 
-  static Future<void> deleteItem(int id) async {
+  static Future<void> deleteItem() async {
     final db = await DatabaseHelper.db();
     try {
-      await db.delete('user', where: "id = ?", whereArgs: [id]);
+      await db.delete(
+        'user',
+      );
     } catch (e) {
       print('Something went wrong deleting an item $e');
     }
+  }
+
+  static Future<List<Map<String, dynamic>>> getToken() async {
+    final db = await DatabaseHelper.db();
+    return db.query(
+      'user',
+      where: "id = ?",
+      limit: 1,
+      columns: ['token'],
+    );
   }
 }
